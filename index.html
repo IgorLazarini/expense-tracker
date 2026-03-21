@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Controle de Gastos</title>
+    </head>
+     <body>
+        <h1>Controle de Gastos</h1>
+        <form id="formGasto">
+            <input id="Descricao" type="text" placeholder="Descrição">
+            <input id="Valor" type="number" placeholder="Valor">
+        <select id="Categoria">
+            <option>Alimentação</option>
+            <option>Lazer</option>
+            <option>Transporte</option>
+            <option>Economia</option>
+            <option>Outros</option>
+        </select>
+        <button>Adicionar</button>
+        </form>
+        <h2>Gastos</h2>
+        <ul id="listaGastos"></ul>
+        <p>Total: R$  <span id="total">0</span></p>
+       
+        <script src="script.js"></script>
+     </body>
+</html>
