@@ -7,26 +7,27 @@ const totalgastos = document.getElementById("total");
 let gtotal = 0;
 let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
 
-gastos.forEach(function(gasto){
+gastos.forEach(function(gastoS){
 
     const item = document.createElement ("li");
-    item.textContent = gasto.descricao + " - R$" + gasto.valor + " (" + gasto.categoria + ")";
+    item.textContent = gastoS.descricao + " - R$" + gastoS.valor + " (" + gastoS.categoria + ")";
     const bExcluir = document.createElement("button");
         bExcluir.textContent = "X";
     bExcluir.addEventListener("click", function(){
         item.remove();
-        gtotal -= gasto.valor;
+        gtotal -= gastoS.valor;
         gastos = gastos.filter(function(g) {
-            return g!== gasto;
+            return g!== gastoS;
         })
         localStorage.setItem("gastos", JSON.stringify(gastos));
 
         totalgastos.textContent = gtotal;
+        criarGrafico();
     })
     item.appendChild(bExcluir);
     lista.appendChild(item);
 
-    gtotal += gasto.valor;
+    gtotal += gastoS.valor;
 });
     totalgastos.textContent = gtotal;
 
@@ -53,6 +54,7 @@ gastos.forEach(function(gasto){
     });
     localStorage.setItem("gastos", JSON.stringify(gastos));
         totalgastos.textContent = gtotal;
+        criarGrafico();
     });
     gastos.push({
         descricao: descricao,
@@ -71,4 +73,39 @@ gastos.forEach(function(gasto){
     
     item.appendChild(bExcluir);
     lista.appendChild(item);
+    criarGrafico();
 });
+function gerarDadosGrafico() {
+    let totalCategoria = {};
+        
+    gastos.forEach(function(gastoGrafico){
+        if (totalCategoria[gastoGrafico.categoria]) {
+            totalCategoria[gastoGrafico.categoria] += gastoGrafico.valor;
+        } else {
+            totalCategoria[gastoGrafico.categoria] = gastoGrafico.valor;
+        }
+    });
+    return totalCategoria;
+}
+function criarGrafico() {
+    const antigo = document.getElementById("graficoGastos");
+    if (antigo) {
+        antigo.remove();
+    }
+    const novoCanvas = document.createElement("canvas");
+    novoCanvas.id = "graficoGastos";
+    document.body.appendChild(novoCanvas);
+
+    const dados = gerarDadosGrafico();
+    const ctx = document.getElementById("graficoGastos");
+
+    new Chart (ctx, {
+        type: "pie",
+        data: {
+            labels: Object.keys(dados),
+            datasets: [{
+                data: Object.values(dados)
+            }]
+        }
+    });
+} criarGrafico();
