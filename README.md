@@ -14,6 +14,10 @@ Aplicação web para gerenciamento de despesas
 - JS
 - Chart.js
 
+## Melhorias Futuras
+- Filtro por categoria
+- Melhoria de Design com CSS
+
 ## Como Usar
 Abra o arquivo index.html no navegador
 
