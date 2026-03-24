@@ -1,3 +1,35 @@
+🇺🇸 English | 🇧🇷 Português
+## 🇺🇸 English
+
+# Expense Control System
+
+Web application for expenses control
+
+## Features
+- Add/Remove expenses
+- Categorization
+- Automatic total Calculation
+- Data stored using LocalStorage
+- Expense chart by category (Chart.js)
+
+## Technologies
+- HTML
+- JS
+- Chart.js
+
+## Future Improvements
+- Category Filtering
+- UI/UX improvements with CSS
+
+## How to Use
+Open the index.html file in your browser
+
+## Author
+Igor Lazarini
+
+
+## 🇧🇷 Português 
+
 # Controle de Gastos
 
 Aplicação web para gerenciamento de despesas
@@ -21,5 +53,5 @@ Aplicação web para gerenciamento de despesas
 ## Como Usar
 Abra o arquivo index.html no navegador
 
-# Autor
+## Autor
 Igor Lazarini
